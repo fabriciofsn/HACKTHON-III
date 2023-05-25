@@ -31,9 +31,7 @@ export class Colaborador {
 
   //GETTER E SETTER SETOR ID
   public set setorID(value: Setor[]) {
-    for (let idSetor of this._setorID) {
-      value.map((id) => (id.id = idSetor.id));
-    }
+    this._setorID = value;
   }
   public get setorID(): Setor[] {
     return this._setorID;
@@ -41,9 +39,7 @@ export class Colaborador {
 
   //GETTER E SETTER CARGO ID
   public set cargoID(value: Cargo[]) {
-    for (let cargoID of this.cargoID) {
-      value.map((id) => (id.id = cargoID.id));
-    }
+    this._cargoID = value;
   }
   public get cargoID(): Cargo[] {
     return this._cargoID;

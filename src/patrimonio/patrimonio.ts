@@ -1,30 +1,32 @@
 import { Categoria } from "../categoria/categoria";
+import { Colaborador } from "../colaborador/colaborador";
 import { Setor } from "../setor/Setor";
+import { Estado } from "../tipos/estado";
 
 export class Patrimonio {
   private _id: number = 0;
   private _setorID: Setor[] = [];
   private _categoriaID: Categoria[] = [];
-  private _colaboradorID: number = 0; //TODO  FK colaborador
+  private _colaboradorID: Colaborador[] = [];
   private _codigo: string = "";
   private _nome: string = "";
   private _dataAdquirido: Date = new Date();
   private _valorAdquirido: number = 0;
   private _valorDepreciado: number = 0;
-  private _estado: string = "";
+  private _estado: Estado = Estado.ATIVO;
   private _observacao: string = "";
 
   constructor(
     id: number,
     setorID: Setor[],
     catedoriaID: Categoria[],
-    colaboradorID: number,
+    colaboradorID: Colaborador[],
     codigo: string,
     nome: string,
     dataAdquirido: Date,
     valorAdquirido: number,
     valorDepreciado: number,
-    estado: string,
+    estado: Estado,
     observacao: string
   ) {
     this.id = id;
@@ -50,9 +52,7 @@ export class Patrimonio {
 
   //GETTER E SETTER SETOR ID
   public set setorID(setor: Setor[]) {
-    for (let setorID of setor) {
-      this._setorID.map((id) => (id.id = setorID.id));
-    }
+    this._setorID = setor;
   }
   public get setorID() {
     return this._setorID;
@@ -60,17 +60,15 @@ export class Patrimonio {
 
   //GETTER E SETTER CATEGORIA ID
   public set categoriaID(categoria: Categoria[]) {
-    for (let catID of categoria) {
-      this._categoriaID.map((id) => (id.id = catID.id));
-    }
+    this._categoriaID = categoria;
   }
   public get categoriaID() {
     return this._categoriaID;
   }
 
   //GETTER E SETTER COLABORADOR ID
-  public set colaboradorID(id: number) {
-    this._colaboradorID = id; //Deve ser alterado para classe colaborador
+  public set colaboradorID(idColab: Colaborador[]) {
+    this._colaboradorID = idColab;
   }
   public get colaboradorID() {
     return this._colaboradorID;
@@ -117,7 +115,7 @@ export class Patrimonio {
   }
 
   //GETTER E SETTER ESTADO
-  public set estado(estado: string) {
+  public set estado(estado: Estado) {
     this._estado = estado;
   }
   public get estado() {

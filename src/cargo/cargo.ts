@@ -1,12 +1,12 @@
 export class Cargo {
   private _id: number = 0;
-  private _name: string = "";
-  private _function: string = "";
+  private _nome: string = "";
+  private _funcao: string = "";
 
-  constructor(id: number, name: string, func: string) {
+  constructor(id: number, nome: string, func: string) {
     this.id = id;
-    this.name = name;
-    this.function = func;
+    this.nome = nome;
+    this.funcao = func;
   }
 
   public set id(id: number) {
@@ -16,17 +16,17 @@ export class Cargo {
     return this._id;
   }
 
-  public set name(name: string) {
-    this._name = name;
+  public set nome(nome: string) {
+    this._nome = nome;
   }
-  public get name(): string {
-    return this._name;
+  public get nome(): string {
+    return this._nome;
   }
 
-  public set function(func: string) {
-    this._function = func;
+  public set funcao(func: string) {
+    this._funcao = func;
   }
-  public get function(): string {
-    return this._function;
+  public get funcao(): string {
+    return this._funcao;
   }
 }

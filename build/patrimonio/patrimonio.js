@@ -1,18 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Patrimonio = void 0;
+const estado_1 = require("../tipos/estado");
 class Patrimonio {
     constructor(id, setorID, catedoriaID, colaboradorID, codigo, nome, dataAdquirido, valorAdquirido, valorDepreciado, estado, observacao) {
         this._id = 0;
         this._setorID = [];
         this._categoriaID = [];
-        this._colaboradorID = 0; //TODO  FK colaborador
+        this._colaboradorID = [];
         this._codigo = "";
         this._nome = "";
         this._dataAdquirido = new Date();
         this._valorAdquirido = 0;
         this._valorDepreciado = 0;
-        this._estado = "";
+        this._estado = estado_1.Estado.ATIVO;
         this._observacao = "";
         this.id = id;
         this.setorID = setorID;
@@ -44,16 +45,16 @@ class Patrimonio {
     }
     //GETTER E SETTER CATEGORIA ID
     set categoriaID(categoria) {
-        for (let catID of categoria) {
-            this._categoriaID.map((id) => (id.id = catID.id));
-        }
+        this._categoriaID = categoria;
     }
     get categoriaID() {
         return this._categoriaID;
     }
     //GETTER E SETTER COLABORADOR ID
-    set colaboradorID(id) {
-        this._colaboradorID = id; //Deve ser alterado para classe colaborador
+    set colaboradorID(idColab) {
+        for (let idColaborador of idColab) {
+            this._colaboradorID.map((id) => (id.id = idColaborador.id));
+        }
     }
     get colaboradorID() {
         return this._colaboradorID;
